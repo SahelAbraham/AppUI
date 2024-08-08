@@ -7,5 +7,8 @@ import logoSmall from "../assets/images/logo-small.png";
 import empty from "../assets/images/empty.png";
 import gemlogo from "../assets/images/gemlogo.png"
 import gemlogoSmall from "../assets/images/gemlogoSmall.png"
+import gemlogonew from "../assets/images/gemlogonew.png"
+import placeholderpp from "../assets/images/placeholderpp.png"
+import email from "../assets/images/mail-16.png"
 
-export default { profile, thumbnail, cards, path, logo, logoSmall, empty, gemlogo, gemlogoSmall };
+export default { profile, thumbnail, cards, path, logo, logoSmall, empty, gemlogo, gemlogoSmall, gemlogonew, placeholderpp, email };

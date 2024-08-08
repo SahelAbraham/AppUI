@@ -23,10 +23,11 @@ const SignIn = () => {
   return (
     <SafeAreaView className = "bg-primary h-full">
       <ScrollView>
-        <View className="w-full justify-center h-full px-4 my-6">
-          <Image source={images.gemlogo} resizeMode = 'contain' className = "w-[400px] h-[150]"/>
+        <View className="w-full justify-center h-full px-4 my-6 ">
+          <View className= "items-center">
+            <Image source={images.gemlogo} resizeMode = 'contain' className = "w-[500px] h-[200]"/>
+          </View>
           <Text className="text-2xl text-white text-semibold mt-10 font-psemibold"> Log In </Text>
-
           <FormField
             title="Email"
             value={form.email}
