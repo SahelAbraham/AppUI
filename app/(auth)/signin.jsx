@@ -3,7 +3,6 @@ import {React, useState} from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { images } from '../../constants'
 import FormField from '../../components/FormField'
-import { TouchableOpacity } from 'react-native-web'
 import CustomButton from '../../components/CustomButton'
 import { Link } from 'expo-router'
 
@@ -25,7 +24,7 @@ const SignIn = () => {
       <ScrollView>
         <View className="w-full justify-center h-full px-4 my-6 ">
           <View className= "items-center">
-            <Image source={images.gemlogo} resizeMode = 'contain' className = "w-[500px] h-[200]"/>
+            <Image source={images.gemlogonew} resizeMode = 'contain' className = "w-[400px] h-[200px]"/>
           </View>
           <Text className="text-2xl text-white text-semibold mt-10 font-psemibold"> Log In </Text>
           <FormField

@@ -7,14 +7,14 @@ import { TouchableOpacity } from 'react-native-web'
 import CustomButton from '../../components/CustomButton'
 import { Link } from 'expo-router'
 
-const Profile = () => {
-
+const Notifications = () => {
+  
   return (
     <SafeAreaView className = "bg-primary h-full">
       <ScrollView>
       <View className="w-full justify-center h-full px-4 my-6">
         <View className="items-center">
-          <Text className="text-xl text-white font-psemibold">Profile</Text>
+          <Text className="text-xl text-white font-psemibold">Notifications</Text>
           <Image source={images.placeholderpp} resizeMode= 'contain' className= 'w-[175px] h-[175px]'></Image>
           <Text className='text-2xl text-white font-psemibold'> USERNAME </Text>
           <View className="flex-row">
@@ -28,4 +28,4 @@ const Profile = () => {
   )
 }
 
-export default Profile
+export default Notifications

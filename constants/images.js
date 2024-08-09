@@ -5,10 +5,12 @@ import path from "../assets/images/path.png";
 import logo from "../assets/images/logo.png";
 import logoSmall from "../assets/images/logo-small.png";
 import empty from "../assets/images/empty.png";
-import gemlogo from "../assets/images/gemlogo.png"
+import ardent from "../assets/images/ardent.png"
 import gemlogoSmall from "../assets/images/gemlogoSmall.png"
 import gemlogonew from "../assets/images/gemlogonew.png"
 import placeholderpp from "../assets/images/placeholderpp.png"
 import email from "../assets/images/mail-16.png"
+import gemlogo2 from "../assets/images/gemlogo2.png"
+import empty2 from "../assets/images/empty2.png"
 
-export default { profile, thumbnail, cards, path, logo, logoSmall, empty, gemlogo, gemlogoSmall, gemlogonew, placeholderpp, email };
+export default { profile, thumbnail, cards, path, logo, logoSmall, empty, ardent, gemlogoSmall, gemlogonew, placeholderpp, email, gemlogo2, empty2 };

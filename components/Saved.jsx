@@ -1,7 +1,8 @@
-import { View, Text, FlatList } from 'react-native'
+import { View, Text } from 'react-native'
 import React from 'react'
+import { FlatList } from 'react-native'
 
-const Latest = ({ posts }) => {
+const Saved = ({posts}) => {
   return (
     <FlatList
         data={posts}
@@ -12,4 +13,4 @@ const Latest = ({ posts }) => {
   )
 }
 
-export default Latest
+export default Saved

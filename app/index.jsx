@@ -11,9 +11,9 @@ export default function App() {
       <ScrollView contentContainerStyle={{ height: '100%'}}>
         <View className="w-full flex items-center min-h-[85vh] px-4 py-10">
           <Image
-            source={images.gemlogo}
-            className="w-[700px] h-[200px]"
-            resizeMode="scale"
+            source={images.gemlogonew}
+            className="w-[400px] h-[200px]"
+            resizeMode="contain"
           />
 
           <CustomButton
