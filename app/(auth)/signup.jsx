@@ -1,22 +1,37 @@
-import { ScrollView, View, Text, Image, KeyboardAvoidingView, Platform } from 'react-native'
-import {React, useState} from 'react'
+import { ScrollView, View, Text, Image, KeyboardAvoidingView, Platform, Alert } from 'react-native'
+import {React, useState, useEffect} from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { images } from '../../constants'
 import FormField from '../../components/FormField'
 import CustomButton from '../../components/CustomButton'
 import { Link } from 'expo-router'
+import {signUp} from '../(auth)/firebase'
 
 const SignUp = () => {
   const [form, setForm] = useState({
-    username:'',
     email:'',
     password: ''
   })
 
-  const [isSubmitting, setIsSubmittting] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const submit = () => {
-    createUserWithEmailAndPassword
+    if(form.email === "" || form.password === ""){
+      Alert.alert("Error", "Please fill in all fields");
+      console.log("Unfilled Fields Failure") 
+    }
+    else if(form.password !== "" && form.password.length < 10){
+      Alert.alert("Error", "Password must be at least 10 characters");
+      console.log("Password Failure") 
+    }
+    else if(!form.email.includes("@") || !form.email.includes(".")){
+      Alert.alert("Error", "Please enter a valid email address")
+      console.log("Email Failure")
+    }
+    else{
+      console.log("Success!")
+      signUp(form.email, form.password)
+    }
   }
 
 
@@ -32,12 +47,6 @@ const SignUp = () => {
             </View>
 
             <FormField
-              title="Username"
-              value={form.username}
-              handleChangeText={(e) => setForm({ ...form, username: e})}
-              otherStyles="mt-10"
-            />
-            <FormField
               title="Email"
               value={form.email}
               handleChangeText={(e) => setForm({ ...form, email: e})}
@@ -50,9 +59,10 @@ const SignUp = () => {
               handleChangeText={(e) => setForm({ ...form, password: e})}
               otherStyles="mt-7"
             />
+            <Text className="mx-2 text-white">Password must be at least 10 characters</Text>
 
             <CustomButton
-              title = "Sign In"
+              title = "Sign Up"
               handlePress={submit}
               containerStyles="mt-7"
               isLoading = {isSubmitting}
