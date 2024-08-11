@@ -13,7 +13,7 @@ const Empty = ( {title, subtitle }) => {
         <Text className="font-pmedium text-sm text-gray-100"> {subtitle} </Text>
         <CustomButton
             title="New Search"
-            handlePress={() => router.push('/search')}
+            handlePress={() => router.push('/search_tab')}
             containerStyles="w-full my-5"
         />
     </View>

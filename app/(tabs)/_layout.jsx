@@ -52,7 +52,7 @@ const TabsLayout = () => {
           }}
         />
         <Tabs.Screen
-          name = "search"
+          name = "search_tab"
           options={{
             title: 'Search',
             headerShown: false,
@@ -67,15 +67,15 @@ const TabsLayout = () => {
           }}
         />
         <Tabs.Screen
-          name = "notifications"
+          name = "bookmarked"
           options={{
-            title: 'Notifications',
+            title: 'Bookmarked',
             headerShown: false,
             tabBarIcon: ({ color, focused }) => (
               <TabIcon
                 icon={icons.bell}
                 color={color}
-                name="Notifications" 
+                name="Bookmarked" 
                 focused={focused}
               />
             ),
