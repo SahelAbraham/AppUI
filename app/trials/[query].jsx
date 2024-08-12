@@ -19,28 +19,11 @@ const Search = () => {
   const auth = getAuth();
   const user = auth.currentUser;
   const [exists, setExists] = useState([])
-  const hardPrompt = 'You\'re an expert health care researcher who wants to obtain a summarized information about a disease and any progress that has been made. Don\'t make up any details or hallucinate information. Your response should be in two paragraphs or less'
+  const hardPrompt = 'You\'re an expert health care researcher who wants to obtain a summarized information about a disease and clinical trials for the disease.'
 
-  const addBookmark = async () => {
-    console.log('Started')
-    if(user){
-      console.log('Trying')
-      await setDoc(doc(DATABASE, "User_Bookmarked", query ),{query: {query}, response: {response}, userId: user.uid})
-      console.log('Success!')
-    }
-    else{
-      Alert.alert('Error', 'No User Logged In')
-      console.log('Failed!')
-    }
-  }
-  const deleteBookmark = async () => {
-    console.log('Attempting Deletion')
-    await deleteDoc(doc(DATABASE, "User_Bookmarked", query))
-    console.log('Success')
-  }
 
     const fetchData = async () => {
-       await fetch(`http://35.193.161.194:2000/services/pubmed_abstracts/`,{
+       await fetch(`http://35.193.161.194:2000/services/clinical_trials/`,{
         method: 'POST',
         headers: new Headers({
           'Content-Type': 'application/json'
@@ -50,11 +33,12 @@ const Search = () => {
           description: 'string',
           prompt: hardPrompt,
           query: query,
-            llm: 'string',
+          llm: 'string',
       })
       }).then(resp => resp.json())
-      .then(data => { setResponse(JSON.stringify(data).replaceAll('\",\"success\":true', '')
-      .replaceAll('\"results\":\"','') .replaceAll('\\n', '\n').slice(1,-1)) })
+        .then(data => { setResponse(JSON.stringify(data.name)) })
+    //   .then(data => { setResponse(JSON.stringify(data).replaceAll('\",\"success\":true', '')
+    //   .replaceAll('\"results\":\"','') .replaceAll('\\n', '\n').slice(1,-1)) })
       .catch(err => { console.log(err) }); 
       setIsLoading(false)
     };
@@ -74,31 +58,12 @@ const Search = () => {
           </SafeAreaView>
         )
       }
-    
-    const pressed = () => {
-      setPress(!press)
-      if (press){
-        setSaved('#00CED1')
-        Alert.alert('Confirmation', 'Save this search to bookmarks?', [
-          { text: 'Cancel', onPress: () => {setSaved('#cdcde0'), setPress(true)}, },
-          { text: 'OK', onPress: () => {console.log('OK Pressed'), addBookmark()} },
-        ],)
-      }
-      else{
-        setSaved('#cdcde0')
-        Alert.alert('Confirmation', 'Delete this bookmarked search?', [
-          { text: 'Cancel', onPress: () => {setSaved('#00CED1'), setPress(false)}, },
-          { text: 'OK', onPress: () => {console.log('Ok2 Pressed'), deleteBookmark()} },
-        ],)
-      }
-
-    }
 
   return (
       <SafeAreaView className="bg-primary h-full">
         <ScrollView>
-          <Text className="text-xl text-white font-psemibold mb-2 px-4 mt-6">Search Results</Text>
-            <TouchableOpacity className="flex-row"onPress={() => {router.push('../search_tab')}}>
+          <Text className="text-xl text-white font-psemibold mb-2 px-4 mt-6">Clinical Trials</Text>
+            <TouchableOpacity className="flex-row"onPress={() => {router.push(`../../search/${query}`)}}>
               <Image
                   source={icons.leftArrow}
                   className='w-5 h-5 ml-4 mr-2'
@@ -108,28 +73,10 @@ const Search = () => {
             </TouchableOpacity>
             <View style={styles.container}>
               <View className="flex-row flex-wrap">
-                <Text className= "text-xl text-black font-pbold mr-5" >{query}     
-                <TouchableOpacity
-                  onPress={pressed}
-                >
-                  <Image
-                    source={icons.bookmark}
-                    className="w-5 h-5 ml-2"
-                    resizeMode='contain'
-                    tintColor={saved}
-                  />
-                </TouchableOpacity>
-
-                </Text>
                 
               </View>
               <Text></Text>
               <Text className= "text-l text-white font-psemibold"> {response} </Text>
-          </View>
-          <View style={styles.container2}>
-            <TouchableOpacity onPress={() => {router.push(`../../trials/${query}`)}}>
-              <Text className="text-black text-xl font-psemibold"> Get info about related clincal trials </Text>
-            </TouchableOpacity>
           </View>
         </ScrollView>
       </SafeAreaView>

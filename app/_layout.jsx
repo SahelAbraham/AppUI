@@ -40,6 +40,7 @@ const RootLayout = () => {
         <Stack.Screen name ="(auth)" options={{headerShown: false}}/>
         <Stack.Screen name ="(tabs)" options={{headerShown: false}}/>
         <Stack.Screen name ="search/[query]" options={{headerShown: false}}/>
+        <Stack.Screen name ="trials/[query[" options={{headerShown: false}}/>
     </Stack>   
     <StatusBar
         backgroundColor="#10142E"

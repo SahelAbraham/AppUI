@@ -37,7 +37,6 @@ const SignUp = () => {
   const signUp = async () => {
     try{
       const response = await createUserWithEmailAndPassword(FIREBASE_AUTH, form.email, form.password)
-      console.log(response);
       router.push('/home')
     }
     catch (error){

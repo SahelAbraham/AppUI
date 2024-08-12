@@ -34,7 +34,6 @@ const SignIn = () => {
   const signIn = async () => {
     try{
       const response = await signInWithEmailAndPassword(FIREBASE_AUTH, form.email, form.password)
-      console.log(response);
       router.push('/home')
     }
     catch (error){
