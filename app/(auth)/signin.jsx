@@ -4,8 +4,9 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import { images } from '../../constants'
 import FormField from '../../components/FormField'
 import CustomButton from '../../components/CustomButton'
-import { Link } from 'expo-router'
-import {signIn} from '../(auth)/firebase'
+import { Link, router } from 'expo-router'
+import {FIREBASE_APP, FIREBASE_AUTH} from '../(auth)/firebase'
+import { signInWithEmailAndPassword } from 'firebase/auth'
 
 const SignIn = () => {
   const [form, setForm] = useState({
@@ -26,10 +27,21 @@ const SignIn = () => {
     }
     else{
       console.log("Success!")
-      signIn(form.email, form.password)
+      signIn()
     }
   }
 
+  const signIn = async () => {
+    try{
+      const response = await signInWithEmailAndPassword(FIREBASE_AUTH, form.email, form.password)
+      console.log(response);
+      router.push('/home')
+    }
+    catch (error){
+      console.log(error);
+      Alert.alert('Sign in failed: ' + error.message )
+    }
+  }
 
   return (
     <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : 'height'} className="flex-1">

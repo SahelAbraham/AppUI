@@ -15,6 +15,7 @@ const Home = () => {
     setRefreshing(true)
   }
 
+
   return (
     <SafeAreaView className="bg-primary h-full">
       
@@ -46,7 +47,7 @@ const Home = () => {
               <Text className="text-gray-100 text-lg font-pregular mb-3">
                 Recent Queries
               </Text>
-              <Saved posts={[{id:1}, {id:2}, {id:3}] ?? []}/>
+              <Saved posts={[]}/>
             </View>
           </View>
         )}

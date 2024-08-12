@@ -4,8 +4,9 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import { images } from '../../constants'
 import FormField from '../../components/FormField'
 import CustomButton from '../../components/CustomButton'
-import { Link } from 'expo-router'
-import {signUp} from '../(auth)/firebase'
+import { Link, router } from 'expo-router'
+import {FIREBASE_APP, FIREBASE_AUTH} from '../(auth)/firebase'
+import { createUserWithEmailAndPassword } from 'firebase/auth'
 
 const SignUp = () => {
   const [form, setForm] = useState({
@@ -30,7 +31,18 @@ const SignUp = () => {
     }
     else{
       console.log("Success!")
-      signUp(form.email, form.password)
+      signUp()
+    }
+  }
+  const signUp = async () => {
+    try{
+      const response = await createUserWithEmailAndPassword(FIREBASE_AUTH, form.email, form.password)
+      console.log(response);
+      router.push('/home')
+    }
+    catch (error){
+      console.log(error);
+      Alert.alert('Registration failed: ' + error.message )
     }
   }
 
