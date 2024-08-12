@@ -39,7 +39,7 @@ const SignIn = () => {
     }
     catch (error){
       console.log(error);
-      Alert.alert('Sign in failed: ' + error.message )
+      Alert.alert('Sign in failed: Either your email or password was typed incorrectly' )
     }
   }
 

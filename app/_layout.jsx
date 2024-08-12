@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from 'react-native'
-import {React, useEffect} from 'react'
+import {React, useEffect, useState} from 'react'
 import { SplashScreen, Slot , Stack } from 'expo-router';
 import { useFonts} from 'expo-font';
 import { StatusBar } from 'expo-status-bar'
@@ -7,6 +7,7 @@ import { StatusBar } from 'expo-status-bar'
 SplashScreen.preventAutoHideAsync();
 
 const RootLayout = () => {
+
 
   const [fontsLoaded, error] = useFonts({
     "Poppins-Black": require("../assets/fonts/Poppins-Black.ttf"),

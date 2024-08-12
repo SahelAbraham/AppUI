@@ -6,7 +6,7 @@ import FormField from '../../components/FormField'
 import CustomButton from '../../components/CustomButton'
 import { Link, router } from 'expo-router'
 import {FIREBASE_APP, FIREBASE_AUTH} from '../(auth)/firebase'
-import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged } from 'firebase/auth'
 
 const SignUp = () => {
   const [form, setForm] = useState({

@@ -32,7 +32,7 @@ const Home = () => {
                   Welcome Back
                 </Text>
                 <Text className="text-2xl font-psemibold text-white">
-                  USERNAME
+                  GEMINI
                 </Text>
               </View>
               <View className="mt-1.5">

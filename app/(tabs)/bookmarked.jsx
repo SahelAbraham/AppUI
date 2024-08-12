@@ -3,7 +3,6 @@ import {React, useState} from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { images } from '../../constants'
 import FormField from '../../components/FormField'
-import { TouchableOpacity } from 'react-native-web'
 import CustomButton from '../../components/CustomButton'
 import { Link } from 'expo-router'
 

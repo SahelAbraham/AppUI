@@ -4,6 +4,7 @@ import { React, useState, useEffect } from 'react'
 import { useLocalSearchParams, router } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { icons } from '../../constants'
+import { DATABASE } from '../(auth)/firebase';
 
 
 const Search = () => {
@@ -44,6 +45,10 @@ const Search = () => {
       //     </SafeAreaView>
       //   )
       // }
+
+    const bookmarkQuery = async => {
+      
+    };
 
   return (
       <SafeAreaView className="bg-primary h-full">
